@@ -1,5 +1,5 @@
 """Test the Task data type."""
-
+import time
 from collections import namedtuple
 
 Task = namedtuple('Task', ['summary', 'owner', 'done', 'id'])
@@ -18,6 +18,7 @@ def test_asdict():
 
 def test_replace():
     """replace() should change passed in fields."""
+    time.sleep(0.1)
     t_before = Task('finish book', 'brian', False)
     t_after = t_before._replace(id=10, done=True)
     t_expected = Task('finish book', 'brian', True, 10)
