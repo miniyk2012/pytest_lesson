@@ -1,8 +1,12 @@
 """Main API for tasks project."""
 
 from collections import namedtuple
+from typing import List
+from typing import Optional
+
 from six import string_types
 
+from tasks.tasksdb_tinydb import TasksDB_TinyDB
 
 # Task element types : [summary: str, owner: str, done: bool, id: int]
 Task = namedtuple('Task', ['summary', 'owner', 'done', 'id'])
@@ -50,7 +54,7 @@ def get(task_id):  # type: (int) -> Task
     return Task(**task_dict)
 
 
-def list_tasks(owner=None):  # type: (str|None) -> list of Task
+def list_tasks(owner=None):  # type: (str|None) -> List[Task]
     """Return a list of Task objects."""
     if owner and not isinstance(owner, string_types):
         raise TypeError('owner must be a string')
@@ -105,7 +109,7 @@ def unique_id():  # type: () -> int
     return _tasksdb.unique_id()
 
 
-_tasksdb = None
+_tasksdb = None  # type: Optional[TasksDB_TinyDB]
 
 
 def start_tasks_db(db_path, db_type):  # type: (str, str) -> None

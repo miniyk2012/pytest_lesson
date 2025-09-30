@@ -1,5 +1,8 @@
-from dotenv import load_dotenv
 import os
+from langchain.chat_models import init_chat_model
+from langchain_openai import ChatOpenAI
+
+from dotenv import load_dotenv
 
 
 def check_deepseek_api_key():
@@ -16,6 +19,8 @@ def check_deepseek_api_key():
     # 为了安全，我们只显示密钥的开头和结尾
     print(f"    (Key: {openai_api_key[:5]}...{openai_api_key[-4:]})")
     return True
+
+
 
 def main():
     """
@@ -69,5 +74,19 @@ def main():
     print("环境基本配置完毕。您可以开始学习 LangChain 的其他章节了！")
 
 
+def init_model(callbacks=None):
+    check_deepseek_api_key()
+    # 2. 定义模型
+    llm = init_chat_model("deepseek-chat", model_provider="deepseek", callbacks=callbacks)
+    return llm
+
+def init_openai_model(callbacks=None):
+    """仍然是加载deepseek模型, 因为设置了OPENAI_BASE_URL=https://api.deepseek.com"""
+    check_deepseek_api_key()
+    model = ChatOpenAI(model_name="deepseek-chat", callbacks=callbacks)
+    return model
+
 if __name__ == "__main__":
     main()
+    model = init_model()
+    print(model)

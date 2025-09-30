@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "langchain-openai>=0.3.33",
     "pip>=25.2",
     "pytest>=8.4.2",
     "requests>=2.32.5",
