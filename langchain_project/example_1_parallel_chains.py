@@ -4,7 +4,7 @@ from langchain_core.runnables import RunnableParallel, RunnableConfig
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.callbacks.stdout import StdOutCallbackHandler
 
-from langchain_project.util import init_model
+from langchain_project.utils.model import init_model
 
 
 def joke(llm):

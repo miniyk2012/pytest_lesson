@@ -1,7 +1,7 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from util import init_model
+from langchain_project.utils.model import init_model
 
 
 def invoke():
@@ -23,12 +23,12 @@ def stream():
     output_parser = StrOutputParser()
     llm = init_model()
     chain = prompt | llm | output_parser
-    stream_response = chain.stream({"input": "常州"})
+    stream_response = chain.stream({"input": "杨恺(我)"})
     for chunk in stream_response:
         # chunk 是一个字符串片段
         print(chunk, end="", flush=True)
 
 
 if __name__ == '__main__':
-    invoke()
-    # stream()
+    # invoke()
+    stream()

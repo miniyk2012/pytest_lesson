@@ -1,7 +1,7 @@
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain_core.prompts import ChatPromptTemplate
 
-from langchain_project.util import init_model, init_openai_model
+from langchain_project.utils.model import init_model, init_openai_model
 
 
 class MyCustomHandler(BaseCallbackHandler):

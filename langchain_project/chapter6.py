@@ -5,7 +5,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.load.dump import dumpd, dumps
 from langchain_core.load.load import load, loads
 
-from langchain_project.util import init_model, init_openai_model
+from langchain_project.utils.model import init_model, init_openai_model
 
 
 def foo():
