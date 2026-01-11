@@ -31,5 +31,5 @@ def init_model(callbacks=None):
 def init_openai_model(callbacks=None):
     """仍然是加载deepseek模型, 因为设置了OPENAI_BASE_URL=https://api.deepseek.com"""
     check_deepseek_api_key()
-    model = ChatOpenAI(model_name="deepseek-chat", callbacks=callbacks)
+    model = ChatOpenAI(model_name="deepseek-reasoner", callbacks=callbacks)
     return model
