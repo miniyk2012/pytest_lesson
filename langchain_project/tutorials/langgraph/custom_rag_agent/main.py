@@ -13,13 +13,15 @@ from langchain.messages import HumanMessage
 
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
-from IPython.display import Image, display
+from IPython.display import Image, display  # noqa
 from pydantic import BaseModel, Field
 
 
 def create_retrieve():
     urls = [
-        "https://tech.meituan.com/2025/12/05/ai-coding-unit-testing.html",
+        "https://colobu.com/2025/01/30/some-notes-about-go-io-fs-package/",
+        "https://colobu.com/2024/11/18/go-internal-ds-4-ary-heap/",
+        "https://colobu.com/2024/11/17/heapmap/"
     ]
 
     docs = [WebBaseLoader(url).load() for url in urls]
@@ -45,7 +47,7 @@ def create_retrieve():
 def create_retrieve_blog_posts_tool(retriever):
     @tool
     def retrieve_blog_posts(query: str) -> str:
-        """Search and return information about meituan blog posts."""
+        """Search and return information about golang language."""
         docs = retriever.invoke(query)
         return "\n\n".join([doc.page_content for doc in docs])
 
@@ -103,7 +105,7 @@ def grade_documents(state: MessagesState) -> Literal["generate_answer", "rewrite
         "你是一名评分人员，负责评估检索到的文档与用户问题的相关性。\n"
         "以下是检索到的文档：\n\n {context}\n\n"
         "以下是用户的问题：{question}\n"
-        "如果文档包含与用户问题相关的关键词或语义信息，则判定该文档为相关。\n"
+        "如果文档与用户问题相关的关键词或语义信息强烈匹配，则判定该文档为相关。\n"
         "请给出二元评分结果，用 'yes' 或 'no' 表示该文档是否与问题相关。"
     )
 
@@ -205,7 +207,7 @@ def main():
                 "messages": [
                     {
                         "role": "user",
-                        "content": "What does Lilian Weng say about types of reward hacking?",
+                        "content": "请问golang中为什么timer使用四叉堆呢?",
                     }
                 ]
             }
@@ -218,3 +220,4 @@ def main():
 
 if __name__ == '__main__':
     # try_receiver()
+    main()
