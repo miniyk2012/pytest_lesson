@@ -1,6 +1,6 @@
 import os
 
-from langchain_project.utils.model import check_deepseek_api_key, init_model
+from langchain_project.utils.model import check_deepseek_api_key, init_model, init_openai_model
 
 
 def main():
@@ -59,3 +59,7 @@ if __name__ == "__main__":
     main()
     model = init_model()
     print(model)
+
+    model = init_openai_model()
+    print(model)
+
