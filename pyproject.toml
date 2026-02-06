@@ -5,6 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "fastmcp>=2.14.2",
+    "langchain-mcp-adapters>=0.2.1",
     "langchain-openai>=0.3.33",
     "pip>=25.2",
     "pytest>=8.4.2",
